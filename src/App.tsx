@@ -21,10 +21,8 @@ function App() {
   ])
   const [currentListId, setCurrentListId] = useState<string>('default')
   const [filter, setFilter] = useState<Filter>('all')
-  const [editingId, setEditingId] = useState<string | null>(null)
   const [showListManager, setShowListManager] = useState(false)
-  const [draggedItemId, setDraggedItemId] = useState<string | null>(null)
-  const [dragOverItemId, setDragOverItemId] = useState<string | null>(null)
+  
   const [expandedGroups, setExpandedGroups] = useState<Record<ItemType, boolean>>({} as Record<ItemType, boolean>)
 
   // Migration: ensure all items in all lists have a category and remove notes if present; ensure groupNotes exists
@@ -117,25 +115,7 @@ function App() {
     }))
   }
 
-  function handleEdit(item: GroceryItem) {
-    setEditingId(item.id)
-  }
-
-  function handleSaveEdit(id: string, name: string, quantity: number) {
-    updateCurrentList((list) => ({
-      ...list,
-      items: list.items.map((it) =>
-        it.id === id
-          ? {
-              ...it,
-              name,
-              quantity,
-            }
-          : it,
-      ),
-    }))
-    setEditingId(null)
-  }
+  
 
   function toggleGroupExpand(category: ItemType) {
     setExpandedGroups((prev) => ({ ...prev, [category]: !prev[category] }))
@@ -148,58 +128,7 @@ function App() {
     }))
   }
 
-  // Drag and Drop functions
-  function handleDragStart(e: React.DragEvent<HTMLElement>, itemId: string) {
-    setDraggedItemId(itemId)
-    e.dataTransfer.effectAllowed = 'move'
-    e.dataTransfer.setData('text/html', itemId)
-  }
-
-  function handleDragOver(e: React.DragEvent<HTMLElement>, itemId: string) {
-    e.preventDefault()
-    e.dataTransfer.dropEffect = 'move'
-    if (draggedItemId && draggedItemId !== itemId) {
-      setDragOverItemId(itemId)
-    }
-  }
-
-  function handleDragLeave(e: React.DragEvent<HTMLElement>) {
-    e.preventDefault()
-    setDragOverItemId(null)
-  }
-
-  function handleDrop(e: React.DragEvent<HTMLElement>, dropItemId: string) {
-    e.preventDefault()
-    if (!draggedItemId || draggedItemId === dropItemId) {
-      setDraggedItemId(null)
-      setDragOverItemId(null)
-      return
-    }
-
-    updateCurrentList((list) => {
-      const draggedIndex = list.items.findIndex((item) => item.id === draggedItemId)
-      const dropIndex = list.items.findIndex((item) => item.id === dropItemId)
-      
-      if (draggedIndex === -1 || dropIndex === -1) return list
-
-      const newItems = [...list.items]
-      const [draggedItem] = newItems.splice(draggedIndex, 1)
-      newItems.splice(dropIndex, 0, draggedItem)
-
-      return {
-        ...list,
-        items: newItems,
-      }
-    })
-
-    setDraggedItemId(null)
-    setDragOverItemId(null)
-  }
-
-  function handleDragEnd() {
-    setDraggedItemId(null)
-    setDragOverItemId(null)
-  }
+  // Drag and drop removed
 
   function createNewList(name: string) {
     const newList: GroceryList = {
@@ -298,23 +227,13 @@ function App() {
                   </div>
                 )}
                 <ul className="divide-y divide-zinc-100 p-3 sm:p-4">
-                  {groupItems.map((item) => (
+                   {groupItems.map((item) => (
                     <GroceryItemComponent
                       key={item.id}
                       item={item}
                       filter={filter}
                       onToggle={handleToggle}
                       onDelete={handleDelete}
-                      onEdit={handleEdit}
-                      onSaveEdit={handleSaveEdit}
-                      editingId={editingId}
-                      draggedItemId={draggedItemId}
-                      dragOverItemId={dragOverItemId}
-                      onDragStart={handleDragStart}
-                      onDragOver={handleDragOver}
-                      onDragLeave={handleDragLeave}
-                      onDrop={handleDrop}
-                      onDragEnd={handleDragEnd}
                     />
                   ))}
                 </ul>
