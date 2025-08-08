@@ -5,7 +5,6 @@ interface NavigationProps {
   lists: GroceryList[]
   currentListId: string
   currentList: GroceryList | undefined
-  stats: { total: number; done: number; remaining: number }
   onListChange: (listId: string) => void
   onShowListManager: () => void
 }
@@ -14,7 +13,6 @@ export function Navigation({
   lists,
   currentListId,
   currentList,
-  stats,
   onListChange,
   onShowListManager,
 }: NavigationProps) {

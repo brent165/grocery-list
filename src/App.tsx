@@ -236,7 +236,6 @@ function App() {
         lists={lists}
         currentListId={currentListId}
         currentList={currentList}
-        stats={stats}
         onListChange={setCurrentListId}
         onShowListManager={() => setShowListManager(true)}
       />
