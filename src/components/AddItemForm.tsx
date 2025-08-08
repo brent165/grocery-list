@@ -26,7 +26,7 @@ export function AddItemForm({ onAdd }: AddItemFormProps) {
   }
 
   return (
-    <section aria-label="add item" className="mb-5 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
+    <section aria-label="add item" className="mb-5 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm sm:p-4">
       <div className="flex flex-col gap-3">
         <input
           value={name}
@@ -35,7 +35,7 @@ export function AddItemForm({ onAdd }: AddItemFormProps) {
           placeholder="Add an item..."
           className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-3 text-base outline-none ring-emerald-500/30 placeholder:text-zinc-400 focus:ring-4"
         />
-        <div className="flex items-stretch gap-2 sm:gap-3">
+        <div className="flex items-stretch gap-2">
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as ItemType)}
@@ -54,11 +54,11 @@ export function AddItemForm({ onAdd }: AddItemFormProps) {
             max={99}
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
-            className="w-20 rounded-xl border border-zinc-200 bg-white px-3 py-3 text-center text-base outline-none ring-emerald-500/30 focus:ring-4 sm:w-24"
+            className="w-16 rounded-xl border border-zinc-200 bg-white px-3 py-3 text-center text-base outline-none ring-emerald-500/30 focus:ring-4 sm:w-24"
           />
           <button
             onClick={handleSubmit}
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-emerald-700 active:bg-emerald-800 flex-1 sm:flex-none"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-emerald-600 px-3 py-3 font-semibold text-white shadow-sm transition hover:bg-emerald-700 active:bg-emerald-800 flex-[1.2] sm:flex-none"
           >
             Add
           </button>

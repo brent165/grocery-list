@@ -20,23 +20,23 @@ export function Navigation({
 
   return (
     <nav className="sticky top-0 z-40 border-b border-zinc-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="mx-auto max-w-screen-sm px-4 py-3">
+      <div className="mx-auto max-w-screen-sm px-3 py-2.5 sm:px-4 sm:py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold tracking-tight">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <h1 className="text-lg font-bold tracking-tight sm:text-xl">
               <span className="bg-gradient-to-r from-emerald-600 to-lime-500 bg-clip-text text-transparent">Grocery</span>{' '}
               Lists
             </h1>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {/* List Selector */}
             <div className="relative">
               <button
                 onClick={() => setShowNavDropdown(!showNavDropdown)}
-                className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm font-medium hover:bg-zinc-50"
+                className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-2 py-2 text-sm font-medium hover:bg-zinc-50 sm:px-3"
               >
-                <span className="truncate max-w-32">
+                <span className="truncate max-w-28 sm:max-w-32">
                   {currentList?.name || 'Select List'}
                 </span>
                 <svg className="h-4 w-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ export function Navigation({
             {/* Manage Lists Button */}
             <button
               onClick={onShowListManager}
-              className="rounded-lg bg-zinc-100 px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-200"
+              className="hidden rounded-lg bg-zinc-100 px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-200 sm:inline-flex"
             >
               Manage
             </button>

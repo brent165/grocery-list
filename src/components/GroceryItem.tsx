@@ -70,7 +70,7 @@ export function GroceryItemComponent({
       onDragOver={(e) => onDragOver(e, item.id)}
       onDragLeave={onDragLeave}
       onDrop={(e) => onDrop(e, item.id)}
-      className={`group flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition-all duration-200 ${
+      className={`group flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-zinc-200 bg-white p-3 sm:p-4 shadow-sm transition-all duration-200 ${
         draggedItemId === item.id
           ? 'opacity-50 scale-95 rotate-1'
           : dragOverItemId === item.id
@@ -159,7 +159,7 @@ export function GroceryItemComponent({
         )}
       </div>
 
-      <div className="ml-auto flex shrink-0 items-center gap-2">
+      <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
         {isEditing ? (
           <>
             <button

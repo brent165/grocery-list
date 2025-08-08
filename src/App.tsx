@@ -252,13 +252,13 @@ function App() {
         <AddItemForm onAdd={handleAdd} />
 
         <section className="mb-4 flex items-center justify-center">
-          <div className="inline-flex rounded-xl bg-zinc-100 p-1 text-sm">
+          <div className="inline-flex rounded-xl bg-zinc-100 p-0.5 text-xs sm:p-1 sm:text-sm">
             {(['all', 'active', 'purchased'] as const).map((key) => (
               <button
                 key={key}
                 onClick={() => setFilter(key)}
                 className={
-                  'rounded-lg px-3 py-1.5 font-medium capitalize transition ' +
+                  'rounded-lg px-2.5 py-1.5 font-medium capitalize transition sm:px-3 ' +
                   (filter === key ? 'bg-white shadow-sm' : 'text-zinc-600 hover:text-zinc-800')
                 }
               >
@@ -271,7 +271,7 @@ function App() {
         <div className="grid gap-6">
           {grouped.map(([category, groupItems]) => (
             groupItems.length === 0 ? null : (
-              <section key={category} className="rounded-2xl border border-zinc-200 bg-white/50 p-0">
+               <section key={category} className="rounded-2xl border border-zinc-200 bg-white/50 p-0">
                 <header className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl border-b border-zinc-200 bg-zinc-50/80 px-4 py-2 text-sm font-semibold text-zinc-700 backdrop-blur">
                   <span className="inline-flex items-center gap-2">
                     {category}
@@ -297,7 +297,7 @@ function App() {
                     />
                   </div>
                 )}
-                <ul className="divide-y divide-zinc-100 p-4">
+                <ul className="divide-y divide-zinc-100 p-3 sm:p-4">
                   {groupItems.map((item) => (
                     <GroceryItemComponent
                       key={item.id}
