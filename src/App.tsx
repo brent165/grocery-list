@@ -231,7 +231,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 font-[Inter,system-ui]">
+    <div className="min-h-dvh bg-zinc-50 font-[Inter,system-ui]">
       <Navigation
         lists={lists}
         currentListId={currentListId}
@@ -241,7 +241,7 @@ function App() {
       />
 
       {/* Main Content */}
-      <div className="mx-auto max-w-screen-sm px-4 pb-24 pt-6">
+      <div className="mx-auto max-w-screen-sm px-4 pb-[calc(env(safe-area-inset-bottom)+6rem)] pt-6">
         {/* Stats */}
         {items.length > 0 && (
           <div className="mb-4 text-center text-sm text-zinc-500">
@@ -272,7 +272,7 @@ function App() {
           {grouped.map(([category, groupItems]) => (
             groupItems.length === 0 ? null : (
               <section key={category} className="rounded-2xl border border-zinc-200 bg-white/50 p-0">
-                <header className="sticky top-0 z-10 -mx-px -mt-px flex items-center justify-between rounded-t-2xl border border-zinc-200 bg-zinc-50/80 px-4 py-2 text-sm font-semibold text-zinc-700 backdrop-blur">
+                <header className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl border-b border-zinc-200 bg-zinc-50/80 px-4 py-2 text-sm font-semibold text-zinc-700 backdrop-blur">
                   <span className="inline-flex items-center gap-2">
                     {category}
                     {groupNotes[category] && groupNotes[category]!.trim().length > 0 ? (
@@ -336,7 +336,7 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="fixed inset-x-0 bottom-0 mx-auto max-w-screen-sm border-t border-zinc-200 bg-white/80 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <footer className="fixed inset-x-0 bottom-0 mx-auto max-w-screen-sm border-t border-zinc-200 bg-white/80 px-4 py-[calc(env(safe-area-inset-bottom)+0.75rem)] backdrop-blur supports-[backdrop-filter]:bg-white/60">
         <div className="flex items-center justify-between text-sm">
           <div className="text-zinc-600">
             {stats.total} items • {stats.done} purchased

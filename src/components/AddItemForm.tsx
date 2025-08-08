@@ -35,7 +35,7 @@ export function AddItemForm({ onAdd }: AddItemFormProps) {
           placeholder="Add an item..."
           className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-3 text-base outline-none ring-emerald-500/30 placeholder:text-zinc-400 focus:ring-4"
         />
-        <div className="flex items-stretch gap-3">
+        <div className="flex items-stretch gap-2 sm:gap-3">
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as ItemType)}
@@ -54,11 +54,11 @@ export function AddItemForm({ onAdd }: AddItemFormProps) {
             max={99}
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
-            className="w-24 rounded-xl border border-zinc-200 bg-white px-3 py-3 text-center text-base outline-none ring-emerald-500/30 focus:ring-4"
+            className="w-20 rounded-xl border border-zinc-200 bg-white px-3 py-3 text-center text-base outline-none ring-emerald-500/30 focus:ring-4 sm:w-24"
           />
           <button
             onClick={handleSubmit}
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-emerald-700 active:bg-emerald-800"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-emerald-700 active:bg-emerald-800 flex-1 sm:flex-none"
           >
             Add
           </button>
